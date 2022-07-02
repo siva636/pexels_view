@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../constants/constants.dart';
+
 class Search extends StatelessWidget {
   const Search({Key? key}) : super(key: key);
 
@@ -7,7 +9,7 @@ class Search extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: Text('Pixels View'),
+        child: Text(title),
       ),
     );
   }
