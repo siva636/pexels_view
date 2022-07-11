@@ -23,7 +23,7 @@ class _MasterViewState extends State<MasterView> {
   Widget build(BuildContext context) {
     searchModel = context.watch<SearchModel>();
     List<Photo> searchResults = searchModel.searchResults;
-    if (searchResults.isEmpty) {
+    if (searchModel.loading) {
       return const Loading();
     } else {
       return Scaffold(
