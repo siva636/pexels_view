@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:pexels_view/src/search/search.dart';
-
 import 'constants/constants.dart';
 
 class App extends StatelessWidget {
@@ -9,6 +8,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: title,
       theme: ThemeData(),
       home: const Search(),
