@@ -7,10 +7,17 @@ import 'package:provider/provider.dart';
 
 void main() async {
   await dotenv.load(fileName: '.env');
+
   runApp(
-    ChangeNotifierProvider(
-      // TODO: Inject SearchService
-      create: (_) => SearchModel(SearchService()),
+    MultiProvider(
+      providers: [
+        Provider(
+          create: (context) => SearchService(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => SearchModel(context.read<SearchService>()),
+        ),
+      ],
       child: const App(),
     ),
   );
