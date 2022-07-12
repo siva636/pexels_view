@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pexels_view/src/loading/loading.dart';
 import 'package:pexels_view/src/error/error.dart';
 import 'package:pexels_view/src/enums/view_state.dart';
+import 'package:pexels_view/src/master_view/empty.dart';
 import 'package:pexels_view/src/models/photo.dart';
 import 'package:pexels_view/src/models/search_model.dart';
 import 'package:provider/provider.dart';
@@ -33,7 +34,11 @@ class _MasterViewState extends State<MasterView> {
       return const Error();
     }
 
-    // if (searchModel.viewState == ViewState.idle) {
+    if (searchModel.viewState == ViewState.idle &&
+        searchModel.searchResults.isEmpty) {
+      return const Empty();
+    }
+
     return Scaffold(
       appBar: AppBar(),
       body: GridView.count(
