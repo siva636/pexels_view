@@ -1,3 +1,5 @@
+import 'package:pexels_view/src/enums/view_state.dart';
+
 mixin CoreModel {
-  var loading = false;
+  var viewState = ViewState.idle;
 }
