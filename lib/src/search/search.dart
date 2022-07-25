@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:pexels_view/src/constants/constants.dart';
 import 'package:pexels_view/src/master_view/master_view.dart';
 import 'package:pexels_view/src/models/search_model.dart';
 import 'package:provider/provider.dart';
+import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 
 class Search extends StatefulWidget {
   const Search({Key? key}) : super(key: key);
@@ -30,6 +30,8 @@ class _SearchState extends State<Search> {
 
   @override
   Widget build(BuildContext context) {
+    double gutter = getBreakpointEntry(context).gutter;
+
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
@@ -38,7 +40,7 @@ class _SearchState extends State<Search> {
             fit: BoxFit.cover,
           ),
         ),
-        padding: const EdgeInsets.all(screenPadding),
+        padding: EdgeInsets.all(gutter),
         child: Center(
           child: Form(
             key: _formKey,
