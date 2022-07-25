@@ -10,7 +10,11 @@ class App extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: title,
-      theme: ThemeData(),
+      theme: ThemeData(
+        useMaterial3: true,
+        colorSchemeSeed: Colors.amber,
+        brightness: Brightness.dark,
+      ).copyWith(errorColor: Colors.red),
       home: const Search(),
     );
   }

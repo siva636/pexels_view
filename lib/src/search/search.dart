@@ -31,7 +31,13 @@ class _SearchState extends State<Search> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/bg.jpg'),
+            fit: BoxFit.cover,
+          ),
+        ),
         padding: const EdgeInsets.all(screenPadding),
         child: Center(
           child: Form(
@@ -48,6 +54,14 @@ class _SearchState extends State<Search> {
                       return null;
                     }
                   },
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    fillColor: Colors.black.withOpacity(0.3),
+                    filled: true,
+                    suffixIcon: const Icon(Icons.search),
+                  ),
                 ),
                 ElevatedButton(
                   onPressed: () async {
