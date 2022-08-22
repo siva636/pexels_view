@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:pexels_view/src/app.dart';
-import 'package:pexels_view/src/utility/constant/constant.dart';
 
 void main() {
   testWidgets(
