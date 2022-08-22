@@ -3,12 +3,12 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
-import 'package:pexels_view/src/constants/constants.dart';
-import 'package:pexels_view/src/models/photo.dart';
+import 'package:pexels_view/src/utility/constant/constant.dart';
+import 'package:pexels_view/src/media/model/photo.dart';
 
 String key = dotenv.env['key']!;
 
-class SearchService {
+class MediaRepository {
   Future<List<Photo>> fetchPhotos(String query) async {
     final response = await http.get(
       Uri.parse('${photosBaseUrl}search?query=$query'),

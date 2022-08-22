@@ -1,5 +1,5 @@
 name: pexels_view
-description: A new Flutter project.
+description: A celebration of photos & videos with Flutter & Pexels API
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -31,7 +31,7 @@ dependencies:
     sdk: flutter
   http: ^0.13.4
   flutter_dotenv: ^5.0.2
-  provider: ^6.0.3
+  flutter_bloc: ^8.1.1
   adaptive_breakpoints: ^0.1.4
 
   # The following adds the Cupertino Icons font to your application.

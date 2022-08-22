@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:pexels_view/src/master_view/master_view.dart';
-import 'package:pexels_view/src/models/search_model.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pexels_view/src/media/bloc/media_bloc.dart';
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:pexels_view/src/media/ui/master_view.dart';
 
 class Search extends StatefulWidget {
   const Search({Key? key}) : super(key: key);
@@ -12,14 +12,12 @@ class Search extends StatefulWidget {
 }
 
 class _SearchState extends State<Search> {
-  late SearchModel searchModel;
   TextEditingController controller = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
     super.initState();
-    searchModel = context.read<SearchModel>();
   }
 
   @override
@@ -70,8 +68,9 @@ class _SearchState extends State<Search> {
                     if (!_formKey.currentState!.validate()) {
                       return;
                     }
-                    searchModel.searchResults = [];
-                    searchModel.fetchPhotos(controller.text);
+                    BlocProvider.of<MediaBloc>(context).add(
+                      MediaSearch(controller.text),
+                    );
                     Navigator.push(
                       context,
                       MaterialPageRoute(
