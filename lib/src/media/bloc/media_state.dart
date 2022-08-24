@@ -1,31 +1,24 @@
 part of 'media_bloc.dart';
 
 @immutable
-abstract class MediaState {
-  abstract final ViewState viewState;
-  abstract final List<Photo> searchResults;
-}
+class MediaState {
+  final ViewState viewState;
+  final List<Photo> searchResults;
 
-class MediaStateImpl extends MediaState {
-  ViewState viewStateImpl;
-  List<Photo> searchResultsImpl;
+  const MediaState({
+    required this.viewState,
+    required this.searchResults,
+  });
 
-  @override
-  List<Photo> get searchResults => searchResultsImpl;
-
-  @override
-  ViewState get viewState => viewStateImpl;
-
-  MediaStateImpl(
-      {required this.viewStateImpl, required this.searchResultsImpl});
-  MediaStateImpl.initial()
+  const MediaState.initial()
       : this(
-          viewStateImpl: ViewState.idle,
-          searchResultsImpl: const [],
+          viewState: ViewState.idle,
+          searchResults: const [],
         );
-  MediaStateImpl.loading()
+
+  const MediaState.loading()
       : this(
-          viewStateImpl: ViewState.busy,
-          searchResultsImpl: const [],
+          viewState: ViewState.busy,
+          searchResults: const [],
         );
 }

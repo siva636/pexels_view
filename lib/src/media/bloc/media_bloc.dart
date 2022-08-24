@@ -9,22 +9,21 @@ part 'media_state.dart';
 
 class MediaBloc extends Bloc<MediaEvent, MediaState> {
   MediaRepository mediaRepository;
-  MediaBloc(this.mediaRepository) : super(MediaStateImpl.initial()) {
+  MediaBloc(this.mediaRepository) : super(const MediaState.initial()) {
     on<MediaSearch>((event, emit) async {
       try {
         emit(
-          MediaStateImpl.loading(),
+          const MediaState.loading(),
         );
         List<Photo> photos = await mediaRepository.fetchPhotos(event.query);
         emit(
-          MediaStateImpl(
-              viewStateImpl: ViewState.idle, searchResultsImpl: photos),
+          MediaState(viewState: ViewState.idle, searchResults: photos),
         );
       } catch (e) {
         emit(
-          MediaStateImpl(
-            viewStateImpl: ViewState.error,
-            searchResultsImpl: state.searchResults,
+          MediaState(
+            viewState: ViewState.error,
+            searchResults: state.searchResults,
           ),
         );
       }
