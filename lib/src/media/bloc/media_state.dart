@@ -1,7 +1,7 @@
 part of 'media_bloc.dart';
 
 @immutable
-class MediaState {
+class MediaState extends Equatable {
   final ViewState viewState;
   final List<Photo> searchResults;
 
@@ -21,4 +21,7 @@ class MediaState {
           viewState: ViewState.busy,
           searchResults: const [],
         );
+
+  @override
+  List<Object?> get props => [viewState, searchResults];
 }
