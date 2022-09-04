@@ -3,7 +3,8 @@ part of 'media_bloc.dart';
 @immutable
 abstract class MediaEvent {}
 
-class MediaSearch extends MediaEvent {
-  String query;
-  MediaSearch(this.query);
+class FetchPage extends MediaEvent {
+  final int index;
+  final String query;
+  FetchPage({required this.index, required this.query});
 }

@@ -68,13 +68,13 @@ class _SearchState extends State<Search> {
                     if (!_formKey.currentState!.validate()) {
                       return;
                     }
-                    BlocProvider.of<MediaBloc>(context).add(
-                      MediaSearch(controller.text),
-                    );
+                    context.read<MediaBloc>().add(
+                          FetchPage(index: 0, query: controller.text),
+                        );
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => MasterView(),
+                        builder: (context) => const MasterView(),
                       ),
                     );
                   },
