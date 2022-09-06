@@ -16,6 +16,7 @@ class MediaBloc extends Bloc<MediaEvent, MediaState> {
 
   MediaBloc(this.mediaRepository) : super(MediaState.initial()) {
     on<FetchPage>((event, emit) async {
+      final ItemsPage page;
       int index = event.index;
       var pageNumber = (index ~/ itemsPerPage) + 1;
       String query = event.query;
@@ -25,8 +26,19 @@ class MediaBloc extends Bloc<MediaEvent, MediaState> {
       }
 
       pagesBeingFetched.add(pageNumber);
-      final page =
-          await mediaRepository.fetchPage(pageNumber: pageNumber, query: query);
+      try {
+        page = await mediaRepository.fetchPage(
+            pageNumber: pageNumber, query: query);
+      } catch (e) {
+        pagesBeingFetched.remove(pageNumber);
+        emit(
+          state.copyWith(
+            viewState: ViewState.error,
+          ),
+        );
+        return;
+      }
+
       pagesBeingFetched.remove(pageNumber);
 
       Map<int, ItemsPage> pagesBeforeClearCache = Map.from(state.pages);
