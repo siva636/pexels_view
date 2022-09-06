@@ -1,7 +1,7 @@
 part of 'media_bloc.dart';
 
 @immutable
-class MediaState {
+class MediaState extends Equatable {
   final ViewState viewState;
   final Map<int, ItemsPage> pages;
   final String? query;
@@ -55,6 +55,6 @@ class MediaState {
     return null;
   }
 
-  // @override
-  // List<Object?> get props => [viewState, pages, itemCount, query];
+  @override
+  List<Object?> get props => [viewState, pages, itemCount, query];
 }

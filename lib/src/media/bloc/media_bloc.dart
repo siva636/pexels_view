@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pexels_view/src/media/model/photo.dart';
@@ -28,10 +29,10 @@ class MediaBloc extends Bloc<MediaEvent, MediaState> {
           await mediaRepository.fetchPage(pageNumber: pageNumber, query: query);
       pagesBeingFetched.remove(pageNumber);
 
-      Map<int, ItemsPage> pagesBeforeClearCache = state.pages;
+      Map<int, ItemsPage> pagesBeforeClearCache = Map.from(state.pages);
       pagesBeforeClearCache[pageNumber] = page;
       Map<int, ItemsPage> pagesAfterClearCache =
-          _clearCache(pageNumber, state.pages);
+          _clearCache(pageNumber, pagesBeforeClearCache);
 
       emit(
         state.copyWith(
