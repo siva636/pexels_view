@@ -1,3 +1,4 @@
+import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pexels_view/src/media/bloc/media_bloc.dart';
@@ -23,6 +24,7 @@ class _MasterViewState extends State<MasterView> {
 
   @override
   Widget build(BuildContext context) {
+    int columns = getBreakpointEntry(context).columns;
     return BlocBuilder<MediaBloc, MediaState>(
         builder: (context, MediaState ms) {
       if (ms.viewState == ViewState.busy) {
@@ -40,8 +42,8 @@ class _MasterViewState extends State<MasterView> {
         appBar: AppBar(),
         body: GridView.builder(
             itemCount: ms.itemCount,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: columns ~/ 2),
             itemBuilder: (context, index) {
               MediaBloc mb = context.watch<MediaBloc>();
               var item = mb.state.getByIndex(index);
@@ -68,9 +70,17 @@ class PhotoDisplay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (photo != null) {
-      return Image.network(photo!.mediumUrl);
+      return Padding(
+        padding: const EdgeInsets.all(imagePadding),
+        child: Image.network(photo!.mediumUrl),
+      );
     } else {
-      return Image.asset(imagePlaceholderUrlUrl);
+      return Padding(
+        padding: const EdgeInsets.all(imagePlaceHolderPadding),
+        child: Image.asset(
+          imagePlaceholderUrlUrl,
+        ),
+      );
     }
   }
 }
