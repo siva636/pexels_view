@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pexels_view/src/media/bloc/media_bloc.dart';
 import 'package:pexels_view/src/media/model/photo.dart';
 import 'package:pexels_view/src/media/ui/empty.dart';
+import 'package:pexels_view/src/media/ui/single_view.dart';
 import 'package:pexels_view/src/utility/constant/constant.dart';
 import 'package:pexels_view/src/utility/enum/view_state.dart';
 import 'package:pexels_view/src/ux/loading/loading.dart';
@@ -25,6 +26,7 @@ class _MasterViewState extends State<MasterView> {
   @override
   Widget build(BuildContext context) {
     int columns = getBreakpointEntry(context).columns;
+
     return BlocBuilder<MediaBloc, MediaState>(
         builder: (context, MediaState ms) {
       if (ms.viewState == ViewState.busy) {
@@ -72,7 +74,20 @@ class PhotoDisplay extends StatelessWidget {
     if (photo != null) {
       return Padding(
         padding: const EdgeInsets.all(imagePadding),
-        child: Image.network(photo!.mediumUrl),
+        child: InkWell(
+          onTap: () {
+            MediaBloc mb = context.read<MediaBloc>();
+            mb.add(FetchItem(id: photo!.id));
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => SingleView(photo!),
+            ));
+          },
+          child: Hero(
+              tag: photo!.id,
+              child: Image.network(
+                photo!.mediumUrl,
+              )),
+        ),
       );
     } else {
       return Padding(

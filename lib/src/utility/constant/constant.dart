@@ -4,6 +4,6 @@ const maxCachedPages = 100;
 const photosBaseUrl = 'https://api.pexels.com/v1/';
 const videosBaseUrl = 'https://api.pexels.com/videos/';
 const imagePlaceholderUrlUrl = 'assets/images/image_placeholder.jpg';
-const imagePadding = 8.0;
+const imagePadding = 4.0;
 const imagePlaceHolderPadding = 8.0;
 const screenPadding = 8.0;

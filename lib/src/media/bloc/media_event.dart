@@ -8,3 +8,8 @@ class FetchPage extends MediaEvent {
   final String query;
   FetchPage({required this.index, required this.query});
 }
+
+class FetchItem extends MediaEvent {
+  final int id;
+  FetchItem({required this.id});
+}

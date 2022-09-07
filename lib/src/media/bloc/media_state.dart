@@ -6,12 +6,14 @@ class MediaState extends Equatable {
   final Map<int, ItemsPage> pages;
   final String? query;
   final int? itemCount;
+  final Photo? photo;
 
   const MediaState({
     required this.viewState,
     required this.pages,
     this.query,
     this.itemCount,
+    this.photo,
   });
 
   MediaState.initial()
@@ -21,12 +23,7 @@ class MediaState extends Equatable {
         );
 
   MediaState loading() {
-    return MediaState(
-      viewState: ViewState.busy,
-      pages: pages,
-      query: query,
-      itemCount: itemCount,
-    );
+    return copyWith(viewState: ViewState.busy);
   }
 
   MediaState copyWith({
@@ -34,12 +31,14 @@ class MediaState extends Equatable {
     String? query,
     int? itemCount,
     Map<int, ItemsPage>? pages,
+    Photo? photo,
   }) {
     return MediaState(
       viewState: viewState ?? this.viewState,
       pages: pages ?? this.pages,
       query: query ?? this.query,
       itemCount: itemCount ?? this.itemCount,
+      photo: photo ?? this.photo,
     );
   }
 
@@ -56,5 +55,5 @@ class MediaState extends Equatable {
   }
 
   @override
-  List<Object?> get props => [viewState, pages, itemCount, query];
+  List<Object?> get props => [viewState, pages, itemCount, query, photo];
 }

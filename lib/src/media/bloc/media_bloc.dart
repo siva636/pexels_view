@@ -55,6 +55,27 @@ class MediaBloc extends Bloc<MediaEvent, MediaState> {
         ),
       );
     });
+
+    on<FetchItem>((event, emit) async {
+      int id = event.id;
+      emit(
+        state.copyWith(
+          viewState: ViewState.busy,
+        ),
+      );
+
+      try {
+        Photo photo = await mediaRepository.fetchItem(id);
+        emit(state.copyWith(
+          viewState: ViewState.idle,
+          photo: photo,
+        ));
+      } catch (e) {
+        emit(state.copyWith(
+          viewState: ViewState.error,
+        ));
+      }
+    });
   }
 }
 
