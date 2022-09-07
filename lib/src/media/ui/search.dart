@@ -4,6 +4,8 @@ import 'package:pexels_view/src/media/bloc/media_bloc.dart';
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:pexels_view/src/media/ui/master_view.dart';
 
+import '../../utility/constant/constant.dart';
+
 class Search extends StatefulWidget {
   const Search({Key? key}) : super(key: key);
 
@@ -60,25 +62,32 @@ class _SearchState extends State<Search> {
                     ),
                     fillColor: Colors.black.withOpacity(0.3),
                     filled: true,
-                    suffixIcon: const Icon(Icons.search),
+                    suffixIcon: const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      child: Icon(Icons.search),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(horizontal: 20),
                   ),
                 ),
-                ElevatedButton(
-                  onPressed: () async {
-                    if (!_formKey.currentState!.validate()) {
-                      return;
-                    }
-                    context.read<MediaBloc>().add(
-                          FetchPage(index: 0, query: controller.text),
-                        );
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const MasterView(),
-                      ),
-                    );
-                  },
-                  child: const Text('Search'),
+                Padding(
+                  padding: const EdgeInsets.all(padding),
+                  child: ElevatedButton(
+                    onPressed: () async {
+                      if (!_formKey.currentState!.validate()) {
+                        return;
+                      }
+                      context.read<MediaBloc>().add(
+                            FetchPage(index: 0, query: controller.text),
+                          );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const MasterView(),
+                        ),
+                      );
+                    },
+                    child: const Text('Search'),
+                  ),
                 )
               ],
             ),
