@@ -7,7 +7,7 @@ import 'package:pexels_view/src/media/repository/media_repository.dart';
 import 'package:pexels_view/src/utility/bloc_observer/pexels_bloc_observer.dart';
 
 void main() async {
-  await dotenv.load(fileName: '.env');
+  await dotenv.load(fileName: 'dotenv');
   Bloc.observer = PexelsBlocObserver();
 
   runApp(RepositoryProvider(
