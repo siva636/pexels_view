@@ -2,10 +2,12 @@
 FLUTTER_ROOT=/Applications/flutter
 FLUTTER_APPLICATION_PATH=/Users/siva/flutter_projects/pexels_view
 COCOAPODS_PARALLEL_CODE_SIGN=true
+FLUTTER_TARGET=/Users/siva/flutter_projects/pexels_view/lib/main.dart
 FLUTTER_BUILD_DIR=build
 FLUTTER_BUILD_NAME=1.0.0
 FLUTTER_BUILD_NUMBER=1
+DART_DEFINES=RkxVVFRFUl9XRUJfQVVUT19ERVRFQ1Q9dHJ1ZQ==
 DART_OBFUSCATION=false
 TRACK_WIDGET_CREATION=true
 TREE_SHAKE_ICONS=false
-PACKAGE_CONFIG=.dart_tool/package_config.json
+PACKAGE_CONFIG=/Users/siva/flutter_projects/pexels_view/.dart_tool/package_config.json
