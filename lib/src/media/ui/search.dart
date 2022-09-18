@@ -33,6 +33,14 @@ class _SearchState extends State<Search> {
     double gutter = getBreakpointEntry(context).gutter;
 
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 12.0),
+          child: Image.asset('assets/images/pexels_white.png'),
+        ),
+        backgroundColor: Colors.transparent,
+      ),
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
@@ -88,7 +96,7 @@ class _SearchState extends State<Search> {
                     },
                     child: const Text('Search'),
                   ),
-                )
+                ),
               ],
             ),
           ),
