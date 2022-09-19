@@ -11,11 +11,23 @@ class SingleView extends StatelessWidget {
       appBar: AppBar(),
       body: Center(
         child: Hero(
-            tag: photo.id,
-            child: Image.network(
-              photo.large2xUrl,
-              fit: BoxFit.cover,
-            )),
+          tag: photo.id,
+          child: Image.network(
+            photo.large2xUrl,
+            fit: BoxFit.cover,
+            loadingBuilder: (BuildContext context, Widget child,
+                ImageChunkEvent? loadingProgress) {
+              if (loadingProgress != null &&
+                  loadingProgress.expectedTotalBytes != null &&
+                  loadingProgress.cumulativeBytesLoaded <
+                      loadingProgress.expectedTotalBytes!) {
+                return const CircularProgressIndicator();
+              } else {
+                return child;
+              }
+            },
+          ),
+        ),
       ),
     );
   }
