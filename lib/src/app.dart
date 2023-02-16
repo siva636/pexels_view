@@ -12,9 +12,12 @@ class App extends StatelessWidget {
       title: title,
       theme: ThemeData(
         useMaterial3: true,
-        colorSchemeSeed: Colors.amber,
-        brightness: Brightness.dark,
-      ).copyWith(errorColor: Colors.red),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.amber,
+          brightness: Brightness.dark,
+          error: Colors.red,
+        ),
+      ),
       home: const Search(),
     );
   }
