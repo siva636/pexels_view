@@ -1,3 +1,7 @@
+const onboardingSlogan1 = 'Nature';
+const onboardingSlogan2 = 'Flowers';
+const onboardingSlogan3 = 'Birds, Animals & many more...';
+
 const title = 'Pexels View';
 const itemsPerPage = 50; // Default: 15 Max: 80
 const maxCachedPages = 100;
@@ -8,3 +12,4 @@ const padding = 8.0;
 const imagePadding = 4.0;
 const imagePlaceHolderPadding = 8.0;
 const screenPadding = 8.0;
+const contentPadding = 8.0;
