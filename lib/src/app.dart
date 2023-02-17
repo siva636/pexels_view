@@ -1,6 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:pexels_view/src/onboarding/onboarding.dart';
+import 'package:pexels_view/src/onboarding/splash.dart';
 import 'package:pexels_view/src/utility/constant/constant.dart';
 
 class App extends StatelessWidget {
@@ -20,7 +20,7 @@ class App extends StatelessWidget {
           error: Colors.red,
         ),
       ),
-      home: const Onboarding(),
+      home: const Splash(),
     );
   }
 }
