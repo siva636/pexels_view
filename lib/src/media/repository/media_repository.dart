@@ -14,7 +14,7 @@ class MediaRepository {
     final response = await http.get(
       Uri.parse('${photosBaseUrl}photos/$id'),
       headers: {
-        HttpHeaders.authorizationHeader: 'Bearer $key',
+        HttpHeaders.authorizationHeader: key,
       },
     );
     if (response.statusCode == 200) {
@@ -31,7 +31,7 @@ class MediaRepository {
       Uri.parse(
           '${photosBaseUrl}search?query=$query&page=$pageNumber&per_page=$itemsPerPage'),
       headers: {
-        HttpHeaders.authorizationHeader: 'Bearer $key',
+        HttpHeaders.authorizationHeader: key,
       },
     );
     if (response.statusCode == 200) {
